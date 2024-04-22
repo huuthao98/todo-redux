@@ -8,7 +8,7 @@ const { Title } = Typography;
 function App() {
   return (
    <div style={{display:'flex'}}>
-     <MenuApp/>
+     {/* <MenuApp/> */}
       <div
         style={{
           width: 500,

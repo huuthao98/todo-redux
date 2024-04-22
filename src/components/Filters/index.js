@@ -1,23 +1,34 @@
 import { Col, Row, Input, Typography, Radio, Select, Tag } from "antd";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { searchFilterChange, statusFilterChange } from "../../redux/actions";
+// import {
+//   searchFilterChange,
+//   statusFilterChange,
+//   priorityFilterChange,
+// } from "../../redux/actions";
+import filtersSlice from "./filtersSlice";
 
 const { Search } = Input;
 
 export default function Filters() {
   const dispatch = useDispatch();
   const [searchText, setSearchText] = useState("");
-  const [ filterStatus, setFilterStatus] = useState('All')
+  const [filterStatus, setFilterStatus] = useState("All");
+  const [filterPriority, setFilterPriority] = useState([]);
+
   const handleSearch = (e) => {
     setSearchText(e.target.value);
-    dispatch(searchFilterChange(e.target.value));
+    dispatch(filtersSlice.actions.searchFilterChange(e.target.value));
   };
 
-  const handleChangeFilterStatus=(e)=>{
-    setFilterStatus(e.target.value)
-    dispatch(statusFilterChange(e.target.value))
-  }
+  const handleChangeFilterStatus = (e) => {
+    setFilterStatus(e.target.value);
+    dispatch(filtersSlice.actions.statusFilterChange(e.target.value));
+  };
+  const handleChangeFilterPriority = (value) => {
+    setFilterPriority(value);
+    dispatch(filtersSlice.actions.prioritiesFilterChange(value));
+  };
   return (
     <Row justify="center">
       <Col span={24}>
@@ -51,6 +62,8 @@ export default function Filters() {
           Filter By Priority
         </Typography.Paragraph>
         <Select
+          value={filterPriority}
+          onChange={handleChangeFilterPriority}
           mode="multiple"
           allowClear
           placeholder="Please select"

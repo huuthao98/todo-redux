@@ -1,6 +1,6 @@
-import filtersReducer from "../components/Filters/FiltersSlice";
-import menuReducer from "../components/Menu/MenuSlice";
-import todoListReducer from "../components/TodoList/TodosSlice";
+import filtersReducer from "../components/Filters/filtersSlice";
+import menuReducer from "../components/Menu/menuSlice";
+import todoListReducer from "../components/TodoList/todosSlice";
 import { combineReducers } from "redux";
 // const rootReducer = (state ={}, action) => {
   // console.log(state, action);
@@ -36,9 +36,9 @@ import { combineReducers } from "redux";
 //   }
 // };
 
-const rootReducer = combineReducers({
-  filters:filtersReducer,
-  todoList:todoListReducer,
-  changeMenu:menuReducer
-})
-export default rootReducer;
+// const rootReducer = combineReducers({
+//   filters:filtersReducer,
+//   todoList:todoListReducer,
+//   changeMenu:menuReducer
+// })
+// export default rootReducer;
